@@ -1,0 +1,415 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #F5F4EC;
+  --color-surface: #FFFFFF;
+  --color-surface-2: #C1D3DE;
+  --color-text: #323B3D;
+  --color-text-muted: #72897A;
+  --color-border: #A1B2A7;
+  --color-accent: #72897A;
+  --color-accent-2: #A1B2A7;
+}
+
+:root {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  /* Exact Coolors Palette */
+  --bg: #F5F4EC;
+  --surface: #FFFFFF;
+  --surface-2: #C1D3DE;
+  --text: #323B3D;
+  --text-muted: #72897A;
+  --border: #A1B2A7;
+  --accent: #72897A;
+  --accent-2: #A1B2A7;
+  --accent-soft: #C1D3DE;
+  --glow-rgb: 114, 137, 122;
+  --shadow: 0 10px 30px -15px rgba(50, 59, 61, 0.08);
+}
+
+.dark {
+  --bg: #323B3D;
+  --surface: #262D2F;
+  --surface-2: #3E4B4E;
+  --text: #F5F4EC;
+  --text-muted: #A1B2A7;
+  --border: #4D5B5D;
+  --accent: #A1B2A7;
+  --accent-2: #72897A;
+  --accent-soft: #3E4B4E;
+  --glow-rgb: 161, 178, 167;
+  --shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: var(--font-body);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   BACKGROUND DECORATIVE SHAPES
+   ========================================================= */
+
+
+/* =========================================================
+   TOP LEFT — LIGHT BLUE
+   ========================================================= */
+
+.bg-blob-top-left {
+  position: absolute;
+
+  top: -155px;
+  left: -145px;
+
+  width: 390px;
+  height: 390px;
+
+  background: #C1D3DE;
+
+  border-radius: 50%;
+
+  opacity: 1;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   BOTTOM LEFT — OLIVE / SAGE
+   ========================================================= */
+
+.bg-blob-bottom-left {
+  position: absolute;
+
+  top: 620px;
+  left: -170px;
+
+  width: 500px;
+  height: 500px;
+
+  background: #A1B2A7;
+
+  border-radius: 50%;
+
+  opacity: 1;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   RIGHT — SMALL DARK ORGANIC CURVE
+   ========================================================= */
+
+/*
+  Reworked to match the reference: the curve now starts tight
+  near the top-right edge, bulges left around the vertical
+  middle of the shape, then eases back right toward the
+  bottom — a smooth S-curve instead of one single deep bulge.
+  Height was increased so it reaches the bottom of the hero
+  section instead of leaving a gap of bg color under it.
+*/
+
+.bg-blob-right-dark {
+  position: absolute;
+
+  top: -40px;
+  right: -250px;
+
+  width: 620px;
+  height: 980px;
+
+  background: #323B3D;
+
+  /*
+    Horizontal radii (top-left, top-right, bottom-right, bottom-left)
+    then vertical radii — the two left-side corners meet at the
+    bulge point, which now sits lower (~55% down) and is less
+    deep (45%/55%) than before, matching the reference curve.
+  */
+  border-radius:
+    45% 0 0 55% /
+    55% 0 0 45%;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CUSTOM SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+* {
+  border-color: var(--border);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+
+/* =========================================================
+   FONTS
+   ========================================================= */
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+
+/* =========================================================
+   TEXT SELECTION
+   ========================================================= */
+
+::selection {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.section-shell {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin-inline: auto;
+  padding: 4rem clamp(1.25rem, 5vw, 6rem);
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.eyebrow {
+  color: #323B3D;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   SOFT PANEL
+   ========================================================= */
+
+.soft-panel {
+  border: 1px solid var(--border);
+
+  background: color-mix(
+    in srgb,
+    var(--surface) 90%,
+    transparent
+  );
+
+  box-shadow: var(--shadow);
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+   ========================================================= */
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  border-radius: 9999px;
+
+  background: #72897A;
+  color: #FFFFFF;
+
+  padding: 0.85rem 1.75rem;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  transition: all 0.25s ease;
+
+  box-shadow:
+    0 4px 14px rgba(114, 137, 122, 0.3);
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+
+  background: #5A6E61;
+
+  box-shadow:
+    0 6px 18px rgba(114, 137, 122, 0.4);
+}
+
+
+/* =========================================================
+   SECONDARY BUTTON
+   ========================================================= */
+
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  border: 1.5px solid #72897A;
+  border-radius: 9999px;
+
+  color: #323B3D;
+
+  padding: 0.85rem 1.75rem;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  background: transparent;
+
+  transition: all 0.25s ease;
+}
+
+.secondary-button:hover {
+  transform: translateY(-2px);
+
+  background: rgba(114, 137, 122, 0.1);
+}
+
+
+/* =========================================================
+   GLOW BORDER
+   ========================================================= */
+
+.glow-border {
+  box-shadow:
+    0 0 0 1px rgba(var(--glow-rgb), 0.25),
+    0 15px 35px -24px rgba(var(--glow-rgb), 0.5);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+
+  .bg-blob-top-left {
+    top: -145px;
+    left: -155px;
+
+    width: 350px;
+    height: 350px;
+  }
+
+  .bg-blob-bottom-left {
+    top: 590px;
+    left: -180px;
+
+    width: 440px;
+    height: 440px;
+  }
+
+  .bg-blob-right-dark {
+    top: -35px;
+    right: -270px;
+
+    width: 580px;
+    height: 950px;
+
+    border-radius:
+      45% 0 0 55% /
+      55% 0 0 45%;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  .bg-blob-top-left {
+    top: -180px;
+    left: -180px;
+
+    width: 330px;
+    height: 330px;
+  }
+
+  .bg-blob-bottom-left {
+    top: 610px;
+    left: -200px;
+
+    width: 400px;
+    height: 400px;
+  }
+
+  .bg-blob-right-dark {
+    top: -30px;
+    right: -320px;
+
+    width: 540px;
+    height: 900px;
+
+    border-radius:
+      45% 0 0 55% /
+      55% 0 0 45%;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
