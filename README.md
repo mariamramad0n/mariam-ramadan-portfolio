@@ -1,4 +1,4 @@
-# Ziad Mohamed — Data Analyst Portfolio
+# Mariam Ramadan — Data Analyst Portfolio
 
 React + TypeScript + Tailwind CSS v4 + Supabase. Fully dynamic content (no
 code edits needed to update projects/skills/certs/experience) via a private
