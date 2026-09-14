@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion'
 import Nav from '../components/Nav'
 import ProjectsGrid from '../components/ProjectsGrid'
 import CertificateCard from '../components/CertificateCard'
@@ -143,7 +143,7 @@ export default function Home() {
   const [eduImgError, setEduImgError] = useState(false)
   const shouldReduceMotion = useReducedMotion()
 
-  const fadeUp = {
+  const fadeUp: Variants = {
     hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 15 },
     visible: {
       opacity: 1,
@@ -152,7 +152,7 @@ export default function Home() {
     },
   }
 
-  const staggerContainer = {
+  const staggerContainer: Variants = {
     hidden: {},
     visible: {
       transition: { staggerChildren: shouldReduceMotion ? 0 : 0.08 },

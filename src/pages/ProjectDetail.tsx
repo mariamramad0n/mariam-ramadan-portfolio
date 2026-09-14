@@ -32,6 +32,9 @@ export default function ProjectDetail() {
     return <Navigate to="/#projects" replace />
   }
 
+  const technologies = project.technologies ?? []
+  const keyFeatures = project.keyFeatures ?? []
+
   return (
     <div>
       <Nav name={profile.name} />
@@ -160,7 +163,7 @@ export default function ProjectDetail() {
                     <div className="mt-4 grid grid-cols-3 gap-3">
                       <div className="rounded-xl p-3" style={{ backgroundColor: 'var(--surface-2)' }}>
                         <p className="font-display text-lg font-semibold" style={{ color: 'var(--accent)' }}>
-                          {project.technologies.length}
+                          {technologies.length}
                         </p>
                         <p className="font-mono text-[9px]" style={{ color: 'var(--text-muted)' }}>
                           TOOLS
@@ -192,7 +195,7 @@ export default function ProjectDetail() {
           </div>
 
           <div className="flex flex-wrap gap-2">
-            {project.technologies.map((technology) => (
+            {technologies.map((technology) => (
               <span
                 key={technology}
                 className="rounded-full border px-4 py-2 text-sm"
@@ -204,7 +207,7 @@ export default function ProjectDetail() {
           </div>
         </section>
 
-        {project.keyFeatures.length > 0 && (
+        {keyFeatures.length > 0 && (
           <section className="mt-12 border-t pt-12" style={{ borderColor: 'var(--border)' }}>
             <p className="eyebrow">Highlights</p>
             <h2 className="font-display mt-3 text-2xl font-semibold" style={{ color: 'var(--text)' }}>
@@ -212,7 +215,7 @@ export default function ProjectDetail() {
             </h2>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {project.keyFeatures.map((feature, index) => (
+              {keyFeatures.map((feature, index) => (
                 <div key={feature} className="soft-panel rounded-2xl p-5">
                   <span className="font-mono text-xs" style={{ color: 'var(--accent)' }}>
                     0{index + 1}
